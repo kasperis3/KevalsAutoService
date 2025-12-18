@@ -13,7 +13,8 @@ exports.handler = async (event, context) => {
   // Get API key from environment variable
   // Note: Use GOOGLE_PLACES_API_KEY (without VITE_ prefix) in Netlify
   // VITE_ prefix is only for client-side variables, which we don't want here
-  const apiKey = process.env.GOOGLE_PLACES_API_KEY || process.env.VITE_GOOGLE_PLACES_API_KEY;
+  const apiKey =
+    process.env.GOOGLE_PLACES_API_KEY || process.env.VITE_GOOGLE_PLACES_API_KEY;
 
   if (!apiKey) {
     return {

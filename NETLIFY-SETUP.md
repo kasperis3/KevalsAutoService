@@ -75,7 +75,7 @@ This creates a `dist` folder with your production-ready site.
 5. Value: Your Google Places API key
 6. Click **Save**
 
-**Why not VITE_ prefix?** Variables with `VITE_` prefix get bundled into the client-side code, exposing your API key. Using `GOOGLE_PLACES_API_KEY` keeps it secure on the server.
+**Why not VITE\_ prefix?** Variables with `VITE_` prefix get bundled into the client-side code, exposing your API key. Using `GOOGLE_PLACES_API_KEY` keeps it secure on the server.
 
 ## Step 5: Update CORS Settings (Optional but Recommended)
 
