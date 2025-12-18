@@ -10,3 +10,8 @@
   to = "/.netlify/functions/google-places"
   status = 200
 
+[[redirects]]
+  from = "/api/google-images"
+  to = "/.netlify/functions/google-images"
+  status = 200
+
