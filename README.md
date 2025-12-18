@@ -7,10 +7,12 @@ A modern, responsive web application for Keval Auto Service, a personal home gar
 - 🎨 Beautiful, modern UI with responsive design
 - 📝 Quote request form via Fillout
 - 🚗 Professional service showcase
+- ⭐ Google Reviews section (dynamically loaded)
 - 📱 Fully responsive design
 - ✅ Easy form customization via Fillout
 - 🎯 Smooth scrolling navigation
 - 📊 Service showcase section
+- 🚀 Ready for Netlify deployment
 
 ## Tech Stack
 
@@ -98,6 +100,8 @@ Keval Auto Service/
 │   │   ├── Hero.css
 │   │   ├── Services.jsx      # Services showcase
 │   │   ├── Services.css
+│   │   ├── Reviews.jsx       # Google Reviews section
+│   │   ├── Reviews.css
 │   │   ├── Footer.jsx        # Footer section
 │   │   └── Footer.css
 │   ├── App.jsx               # Main app component (includes Fillout modal)
@@ -129,6 +133,16 @@ The color scheme can be customized in `src/index.css` by modifying the CSS varia
 
 To modify the services displayed, edit the `services` array in `src/components/Services.jsx`.
 
+### Google Reviews
+
+To add your actual Google Business reviews, see [GOOGLE-REVIEWS-SETUP.md](GOOGLE-REVIEWS-SETUP.md) for detailed instructions.
+
+Quick steps:
+
+1. Get your Google Place ID from [Google Place ID Finder](https://developers.google.com/maps/documentation/places/web-service/place-id)
+2. Update `src/components/Reviews.jsx` with your Place ID
+3. Replace sample reviews with your actual reviews, or use a widget service
+
 ## Customizing the Form
 
 To replace with your own Fillout form:
@@ -146,6 +160,25 @@ To replace with your own Fillout form:
   inheritParameters
 />
 ```
+
+## Deployment
+
+### Netlify Deployment
+
+This app is configured for easy deployment to Netlify:
+
+1. **See [NETLIFY-SETUP.md](NETLIFY-SETUP.md) for detailed deployment instructions**
+
+2. **Quick steps:**
+
+   - Connect your Git repository to Netlify
+   - Set environment variable: `VITE_GOOGLE_PLACES_API_KEY`
+   - Deploy!
+
+3. **Netlify Functions:**
+   - Google Places API calls are proxied through a Netlify Function
+   - API key is kept secure server-side
+   - No API key exposed to the browser
 
 ## Browser Support
 
