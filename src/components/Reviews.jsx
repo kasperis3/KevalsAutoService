@@ -8,32 +8,16 @@ function Reviews() {
   const [businessName, setBusinessName] = useState("");
 
   const googlePlaceId = "ChIJp7me7laZj4AR1Voz18Q5NYs";
-  const apiKey = import.meta.env.VITE_GOOGLE_PLACES_API_KEY;
   const isDevelopment = import.meta.env.DEV;
   const googleMapsUrl = `https://www.google.com/maps/place/?q=place_id:${googlePlaceId}`;
 
   useEffect(() => {
     const fetchReviews = async () => {
-      // In development, check for API key. In production, it's server-side.
-      if (isDevelopment && !apiKey) {
-        setError(
-          "Google Places API key not configured. Add VITE_GOOGLE_PLACES_API_KEY to .env file"
-        );
-        setLoading(false);
-        return;
-      }
-
       try {
-        // Use Netlify function in production, or Vite proxy in development
-        let apiUrl;
-
-        if (isDevelopment) {
-          // Development: Use Vite proxy (API key in .env)
-          apiUrl = `/api/google-places/place/details/json?place_id=${googlePlaceId}&fields=name,rating,reviews&key=${apiKey}`;
-        } else {
-          // Production: Use Netlify function (API key is server-side in Netlify env vars)
-          apiUrl = `/api/google-places?place_id=${googlePlaceId}`;
-        }
+        // Always use Netlify function endpoint
+        // In development, Vite proxy will forward to Google API
+        // In production, Netlify Function handles it (API key is server-side)
+        const apiUrl = `/api/google-places?place_id=${googlePlaceId}`;
 
         console.log("Fetching reviews from Google Places API...");
         const response = await fetch(apiUrl);
@@ -115,7 +99,7 @@ function Reviews() {
     };
 
     fetchReviews();
-  }, [googlePlaceId, apiKey, isDevelopment]);
+  }, [googlePlaceId]);
 
   const formatReviewDate = (timestamp) => {
     if (!timestamp) return "";

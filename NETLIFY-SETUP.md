@@ -33,7 +33,8 @@ This creates a `dist` folder with your production-ready site.
    - Publish directory: `dist`
 5. **Add environment variable:**
    - Go to Site settings → Environment variables
-   - Add: `VITE_GOOGLE_PLACES_API_KEY` = `your_actual_api_key_here`
+   - Add: `GOOGLE_PLACES_API_KEY` = `your_actual_api_key_here`
+   - **Important:** Use `GOOGLE_PLACES_API_KEY` (NOT `VITE_GOOGLE_PLACES_API_KEY`) to keep it server-side only
 6. **Deploy!**
 
 ### Option B: Deploy via Netlify CLI
@@ -59,19 +60,22 @@ This creates a `dist` folder with your production-ready site.
 
 4. **Set environment variable:**
    ```bash
-   netlify env:set VITE_GOOGLE_PLACES_API_KEY "your_actual_api_key_here"
+   netlify env:set GOOGLE_PLACES_API_KEY "your_actual_api_key_here"
    ```
+   **Important:** Use `GOOGLE_PLACES_API_KEY` (NOT `VITE_GOOGLE_PLACES_API_KEY`) to keep it server-side only
 
 ## Step 4: Set Environment Variable
 
-**Important:** You MUST set the `VITE_GOOGLE_PLACES_API_KEY` environment variable in Netlify:
+**Important:** You MUST set the `GOOGLE_PLACES_API_KEY` environment variable in Netlify:
 
 1. Go to your site dashboard
 2. Click **Site settings** → **Environment variables**
 3. Click **Add variable**
-4. Key: `VITE_GOOGLE_PLACES_API_KEY`
+4. Key: `GOOGLE_PLACES_API_KEY` (NOT `VITE_GOOGLE_PLACES_API_KEY` - this keeps it server-side only)
 5. Value: Your Google Places API key
 6. Click **Save**
+
+**Why not VITE_ prefix?** Variables with `VITE_` prefix get bundled into the client-side code, exposing your API key. Using `GOOGLE_PLACES_API_KEY` keeps it secure on the server.
 
 ## Step 5: Update CORS Settings (Optional but Recommended)
 
@@ -101,7 +105,7 @@ Or use your custom domain if you have one.
 
 ### Reviews not loading?
 
-1. Check that `VITE_GOOGLE_PLACES_API_KEY` is set in Netlify
+1. Check that `GOOGLE_PLACES_API_KEY` is set in Netlify (NOT `VITE_GOOGLE_PLACES_API_KEY`)
 2. Check Netlify Function logs: Site dashboard → Functions → View logs
 3. Verify your API key is valid
 
